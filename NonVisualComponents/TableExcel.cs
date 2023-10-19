@@ -4,6 +4,7 @@ using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using BorderStyle = NPOI.SS.UserModel.BorderStyle;
 using NonVisualComponents.objects;
+using NPOI.SS.Util;
 
 namespace NonVisualComponents
 {
@@ -20,7 +21,7 @@ namespace NonVisualComponents
 
 			InitializeComponent();
 		}
-		public void GenerateTableExcel(ExcelTableInfo<object> info)
+		public void GenerateTableExcel <T>(ExcelTableInfo<T> info)
 		{
 			if (string.IsNullOrEmpty(info.FilePath))
 			{
@@ -44,12 +45,34 @@ namespace NonVisualComponents
 
 			int posString = 2;
 			int posColumn = 1;
-			int count = 0;
+			int count = 1;
 			int localCount = 0;
 			
 			foreach(var item in info.Properties)
 			{
-				sheet.CreateRow(posString).CreateCell(posColumn).SetCellValue(item);
+				if (info.MergeInfo.ContainsKey(count))
+				{
+					localCount = info.MergeInfo[count].Item2;
+					var mergeStartCelRef = CellReference.ConvertNumToColString(posColumn) + (posString + 1);
+					var mergeEndCelRef = CellReference.ConvertNumToColString(posColumn + localCount) + (posString + 1);
+
+					sheet.AddMergedRegion(new CellRangeAddress(posString, posString, posColumn, posColumn + localCount));
+					var mergeCell = sheet.GetRow(posString).CreateCell(posColumn);
+					mergeCell.SetCellValue(info.MergeInfo[count].Item2);
+				}
+				if (localCount > 0)
+				{
+					sheet.CreateRow(posString + 1).CreateCell(posColumn).SetCellValue(item);
+					localCount--;
+				}
+				else
+				{
+					sheet.AddMergedRegion(new CellRangeAddress(posString, posString+1, posColumn, posColumn));
+					var mergeCell = sheet.GetRow(posString).CreateCell(posColumn);
+					mergeCell.SetCellValue(item);
+				}
+				posColumn++;
+				count++;
 			}
 		}
 

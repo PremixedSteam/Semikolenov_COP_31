@@ -64,29 +64,21 @@ namespace TestForms
         private void buttonSaveTable_Click(object sender, EventArgs e)
         {
             TableExcel table = new();
-            string path = @"C:\\Users\\User\\Documents\\testtable.xlsx";
+            string path = @"C:\\Users\\georg\\Documents\\testtable.xlsx";
             string title = "title";
-            var dataList = new List<object>
+            var dataList = new List<Employee>
             {
                 new Employee { Id = 1, Status = "Active", Name = "John", Surname = "Doe", Age = "30", Department = "IT", Position = "Manager" },
                 new Employee { Id = 2, Status = "Active", Name = "Jane", Surname = "Smith", Age = "35", Department = "Design", Position = "Senior" },
             };
+            var mergeInfo = new Dictionary<int, (string, int)>()
+            {
+                { 3, ("personal data", 3)},
+                { 8, ("work", 2)},
+            };
 
-            var info = new ExcelTableInfo(path, "Sample Document", new List<object>(), new Dictionary<string, (List<string>, List<int>)>());
+			var info = new ExcelTableInfo<Employee>(path, "Sample Document", dataList, mergeInfo);
 
-            info.addDictionary("Table1", "Field1", 20);
-            info.addDictionary("Table1", "Field2", 15);
-            info.addDictionary("Table2", "Field1", 25);
-            info.addDictionary("Table2", "Field2", 18);
-            info.addDictionary("Table2", "Field3", 22);
-
-            info.addDictionaryAlone("Table3", 30);
-
-            info.Data.Add(new Employee1 { Department = "Dept1", Position = "Position1", Name = "Employee1" });
-            info.Data.Add(new Employee1 { Department = "Dept2", Position = "Position2", Name = "Employee2" });
-            info.Data.Add(new Employee1 { Department = "Dept1", Position = "Position1", Name = "Employee3" });
-
-            dataList.Clear();
             try
             {
                 table.GenerateTableExcel(info);
@@ -96,33 +88,7 @@ namespace TestForms
             {
                 MessageBox.Show(ex.Message, "Ошибка",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            /*ExcelTable table = new();
-
-            var mergeInfo = new List<MergeInfo>
-            {
-                new MergeInfo { Value = "", StartRow = 0, EndRow = 0, StartCol = 0, EndCol = 1 },
-                new MergeInfo { Value = "", StartRow = 1, EndRow = 1, StartCol = 0, EndCol = 1 },
-                new MergeInfo { Value = "Личные данные", StartRow = 2, EndRow = 4, StartCol = 0, EndCol = 0 },
-                new MergeInfo { Value = "Работа", StartRow = 5, EndRow = 6, StartCol = 0, EndCol = 0 }
-            };
-            var headerTitles = new List<string> { "ID", "Status", "Name", "Surname", "Age", "Department", "Position" };
-            var data = new List<object>
-            {
-                new Employees { Id = 1, Status = "Active", Name = "John", Surname = "Doe", Age = "30", Department = "IT", Position = "Manager" },
-                new Employees { Id = 2, Status = "Active", Name = "Jane", Surname = "Smith", Age = "35", Department = "Design", Position = "Senior" },
-            };
-            ExcelTableInfo info = new("C:\\Users\\User\\Documents\\testtable.xlsx", "My Document", mergeInfo, headerTitles, data);
-            try
-            {
-                table.GenerateDocument(info);
-                MessageBox.Show("Сохарнено успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }            
         }
         public class Employee
         {
@@ -133,12 +99,6 @@ namespace TestForms
             public string? Age { get; set; } = string.Empty;
             public string? Department { get; set; } = string.Empty;
             public string? Position { get; set; } = string.Empty;
-        }
-        public class Employee1
-        {
-            public string? Department { get; set; }
-            public string? Position { get; set; }
-            public string? Name { get; set; }
         }
     }
 }
