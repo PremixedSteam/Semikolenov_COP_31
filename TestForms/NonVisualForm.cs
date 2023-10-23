@@ -68,8 +68,8 @@ namespace TestForms
             string title = "title";
             var dataList = new List<Employee>
             {
-                new Employee { Id = 1, Status = "Active", Name = "John", Surname = "Doe", Age = "30", Department = "IT", Position = "Manager" },
-                new Employee { Id = 2, Status = "Active", Name = "Jane", Surname = "Smith", Age = "35", Department = "Design", Position = "Senior" },
+                new Employee { Id = 1, Status = "Active", Name = "John", Surname = "Doe", Age = "30", Childs = "No", Car = "Yes", Department = "IT", Position = "Manager" },
+                new Employee { Id = 2, Status = "Active", Name = "Jane", Surname = "Smith", Age = "35", Childs = "Yes", Car = "No", Department = "Design", Position = "Senior" },
             };
             var mergeInfo = new Dictionary<int, (string, int)>()
             {
@@ -97,7 +97,9 @@ namespace TestForms
             public string? Name { get; set; } = string.Empty;
             public string? Surname { get; set; } = string.Empty;
             public string? Age { get; set; } = string.Empty;
-            public string? Department { get; set; } = string.Empty;
+			public string? Childs { get; set; } = string.Empty;
+			public string? Car { get; set; } = string.Empty;
+			public string? Department { get; set; } = string.Empty;
             public string? Position { get; set; } = string.Empty;
         }
     }
