@@ -26,7 +26,7 @@ namespace TestForms
 
         private void buttonBigDataSave_Click(object sender, EventArgs e)
         {
-            info = new TextObject("C:\\Users\\user\\Documents\\testchart.xlsx", "My Document", richTextBox.Lines);
+            info = new TextObject("C:\\Users\\user\\Documents\\testbigdata.xlsx", "My Document", richTextBox.Lines);
             try
             {
                 bigDataExcel1.GenerateBigDataExcel(info);
@@ -78,10 +78,10 @@ namespace TestForms
                 { 3, ("personal data", 3)},
                 { 8, ("work", 2)},
             };
-            var properties = new List<string>();
+            var properties = new Dictionary<string, string>();
             foreach (var property in typeof(Employee).GetProperties())
             {
-                properties.Add(property.Name);
+                properties.Add(property.Name, property.Name);
             }
             int[] widths = new int[]
             {

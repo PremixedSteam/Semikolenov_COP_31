@@ -61,8 +61,12 @@ namespace NonVisualComponents
 			
 			
 
-			foreach (var item in info.Properties)
+			foreach (var property in typeof(T).GetProperties())
 			{
+				if (!info.Properties.ContainsKey(property.Name))
+				{
+					throw new ArgumentException($"property {1} is not in dictionary", property.Name);
+				}
 				if (info.MergeInfo.ContainsKey(count))
 				{
 					localCount = info.MergeInfo[count].Item2;
@@ -78,7 +82,7 @@ namespace NonVisualComponents
 				}
 				if (localCount > 0)
 				{
-					lower.CreateCell(posColumn).SetCellValue(item);
+					lower.CreateCell(posColumn).SetCellValue(info.Properties[property.Name]);
 					lower.GetCell(posColumn).CellStyle = cellStyle;
 					localCount--;
 				}
@@ -87,7 +91,7 @@ namespace NonVisualComponents
 					CellRangeAddress MergedRegion = new CellRangeAddress(posString, posString + 1, posColumn, posColumn);                    
                     sheet.AddMergedRegion(MergedRegion);
 					var mergeCell = upper.CreateCell(posColumn);
-					mergeCell.SetCellValue(item);
+					mergeCell.SetCellValue(info.Properties[property.Name]);
 					upper.GetCell(posColumn).CellStyle = cellStyle;
 
 				}
@@ -110,7 +114,7 @@ namespace NonVisualComponents
 				
 				foreach (var item in info.Properties)
 				{
-					var property = type.GetProperty(item);
+					var property = type.GetProperty(item.Key);
 					var value = property?.GetValue(data);
 					row.CreateCell(posColumn).SetCellValue(Convert.ToString(value));
 					row.GetCell(posColumn).CellStyle= cellStyle;

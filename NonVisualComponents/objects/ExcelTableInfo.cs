@@ -11,11 +11,11 @@ namespace NonVisualComponents.objects
 		public string? FilePath { get; set; } = string.Empty;
 		public string? DocumentTitle { get; set; } = string.Empty;
 		public List<T>? Data { get; set; } = new();
-		public List<string>? Properties = new();
+		public Dictionary<string, string>? Properties = new();
 		public Dictionary<int, (string Value, int count)>? MergeInfo = new();
 		public int[] Widths; 
 
-		public ExcelTableInfo(string filePath, string documentTitle, List<T> data, List<string> properties, Dictionary<int, (string, int)>? mergeInfo, int[] widths)
+		public ExcelTableInfo(string filePath, string documentTitle, List<T> data, Dictionary<string, string> properties, Dictionary<int, (string, int)>? mergeInfo, int[] widths)
 		{
 			FilePath = filePath;
 			DocumentTitle = documentTitle;
