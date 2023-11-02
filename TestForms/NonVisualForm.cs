@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using NonVisualComponents;
 using NonVisualComponents.Enums;
 using NonVisualComponents.objects;
+using NPOI.SS.Formula.Functions;
+using NPOI.Util.Collections;
 using OfficeOpenXml.Table;
 
 namespace TestForms
@@ -64,7 +66,7 @@ namespace TestForms
         private void buttonSaveTable_Click(object sender, EventArgs e)
         {
             TableExcel table = new();
-            string path = @"C:\\Users\\georg\\Documents\\testtable.xlsx";
+            string path = @"C:\\Users\\user\\Documents\\testtable.xlsx";
             string title = "title";
             var dataList = new List<Employee>
             {
@@ -76,8 +78,16 @@ namespace TestForms
                 { 3, ("personal data", 3)},
                 { 8, ("work", 2)},
             };
-
-			var info = new ExcelTableInfo<Employee>(path, "Sample Document", dataList, mergeInfo);
+            var properties = new List<string>();
+            foreach (var property in typeof(Employee).GetProperties())
+            {
+                properties.Add(property.Name);
+            }
+            int[] widths = new int[]
+            {
+                100, 150, 200, 300, 150, 100, 200, 250, 300
+            };
+            var info = new ExcelTableInfo<Employee>(path, "Sample Document", dataList, properties, mergeInfo, widths);
 
             try
             {

@@ -22,3 +22,15 @@ C:\Users\user\Desktop\COP_lab\NonVisualComponents\obj\Debug\net7.0-windows\NonVi
 C:\Users\user\Desktop\COP_lab\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.AssemblyInfo.cs
 C:\Users\user\Desktop\COP_lab\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\COP_lab\NonVisualComponents\obj\Debug\net7.0-windows\ref\NonVisualComponents.dll
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\bin\Debug\net7.0-windows\NonVisualComponents.deps.json
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\bin\Debug\net7.0-windows\NonVisualComponents.dll
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\bin\Debug\net7.0-windows\NonVisualComponents.pdb
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.csproj.AssemblyReference.cache
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.AssemblyInfoInputs.cache
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.AssemblyInfo.cs
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.csproj.CoreCompileInputs.cache
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.dll
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\refint\NonVisualComponents.dll
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\NonVisualComponents.pdb
+C:\Users\user\Source\Repos\Semikolenov_COP_31\NonVisualComponents\obj\Debug\net7.0-windows\ref\NonVisualComponents.dll

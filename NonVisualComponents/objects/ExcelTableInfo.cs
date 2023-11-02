@@ -13,17 +13,16 @@ namespace NonVisualComponents.objects
 		public List<T>? Data { get; set; } = new();
 		public List<string>? Properties = new();
 		public Dictionary<int, (string Value, int count)>? MergeInfo = new();
+		public int[] Widths; 
 
-		public ExcelTableInfo(string filePath, string documentTitle, List<T> data, Dictionary<int, (string, int)>? mergeInfo)
+		public ExcelTableInfo(string filePath, string documentTitle, List<T> data, List<string> properties, Dictionary<int, (string, int)>? mergeInfo, int[] widths)
 		{
 			FilePath = filePath;
 			DocumentTitle = documentTitle;
 			Data = data;
-			foreach(var property in typeof(T).GetProperties())
-			{
-				Properties.Add(property.Name);
-            }
+			Properties = properties;
 			MergeInfo = mergeInfo;
+			Widths = widths;
 		}
 		
 	}

@@ -9,7 +9,7 @@
       "NonVisualComponents/1.0.0": {
         "dependencies": {
           "DocumentFormat.OpenXml": "2.20.0",
-          "EPPlus": "6.2.10",
+          "EPPlus": "7.0.0",
           "NPOI": "2.6.2"
         },
         "runtime": {
@@ -43,19 +43,20 @@
           }
         }
       },
-      "EPPlus/6.2.10": {
+      "EPPlus/7.0.0": {
         "dependencies": {
           "EPPlus.Interfaces": "6.1.1",
           "EPPlus.System.Drawing": "6.1.1",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "System.ComponentModel.Annotations": "5.0.0",
           "System.Security.Cryptography.Pkcs": "7.0.2",
           "System.Text.Encoding.CodePages": "7.0.0"
         },
         "runtime": {
           "lib/net7.0/EPPlus.dll": {
-            "assemblyVersion": "6.2.10.0",
-            "fileVersion": "6.2.10.0"
+            "assemblyVersion": "7.0.0.3",
+            "fileVersion": "7.0.0.3"
           }
         }
       },
@@ -248,6 +249,7 @@
           }
         }
       },
+      "System.ComponentModel.Annotations/5.0.0": {},
       "System.Configuration.ConfigurationManager/6.0.0": {
         "dependencies": {
           "System.Security.Cryptography.ProtectedData": "6.0.0",
@@ -336,12 +338,12 @@
       "path": "enums.net/4.0.1",
       "hashPath": "enums.net.4.0.1.nupkg.sha512"
     },
-    "EPPlus/6.2.10": {
+    "EPPlus/7.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U/kj9mKoUMOMUvNIMwbD7xy4R/UTyc9baMVxDWQhYaeIueCviC12feQ3qbcUJZc8yyodC8gAj0BhzBg/wFIjTg==",
-      "path": "epplus/6.2.10",
-      "hashPath": "epplus.6.2.10.nupkg.sha512"
+      "sha512": "sha512-fqDPDAB0v+sU1m0VxDy4jBKhH77BoiaGjglnzflUVoHDL3Bnf8Xf/V8/dm3uYhMwChExnqFXxYscslu46seZQQ==",
+      "path": "epplus/7.0.0",
+      "hashPath": "epplus.7.0.0.nupkg.sha512"
     },
     "EPPlus.Interfaces/6.1.1": {
       "type": "package",
@@ -461,6 +463,13 @@
       "sha512": "sha512-K6F39YCm/MaOYT0iw9lMa8tBcz2eF8JaNMneo0EnRrml6k+8EQNSKXqb8yJTq2HHkWLlRHZl6UKMn02YmR/G3g==",
       "path": "sixlabors.imagesharp/2.1.4",
       "hashPath": "sixlabors.imagesharp.2.1.4.nupkg.sha512"
+    },
+    "System.ComponentModel.Annotations/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
+      "path": "system.componentmodel.annotations/5.0.0",
+      "hashPath": "system.componentmodel.annotations.5.0.0.nupkg.sha512"
     },
     "System.Configuration.ConfigurationManager/6.0.0": {
       "type": "package",

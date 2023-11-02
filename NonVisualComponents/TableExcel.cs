@@ -50,10 +50,15 @@ namespace NonVisualComponents
 			IRow upper = sheet.CreateRow(posString);
 			IRow lower = sheet.CreateRow(posString+1);
 			ICellStyle cellStyle = workbook.CreateCellStyle();
-			//cellStyle.BorderLeft = BorderStyle.Thin;
-			//cellStyle.BorderRight = BorderStyle.Thin;
-			//cellStyle.BorderTop = BorderStyle.Thin;
-			//cellStyle.BorderBottom = BorderStyle.Thin;
+			cellStyle.BorderLeft = BorderStyle.Thin;
+			cellStyle.BorderRight = BorderStyle.Thin;
+			cellStyle.BorderTop = BorderStyle.Thin;
+			cellStyle.BorderBottom = BorderStyle.Thin;
+			IFont font = workbook.CreateFont();
+			font.FontName = "Times New Roman";
+			font.FontHeightInPoints = 15;
+			cellStyle.SetFont(font);
+			
 			
 
 			foreach (var item in info.Properties)
@@ -61,22 +66,35 @@ namespace NonVisualComponents
 				if (info.MergeInfo.ContainsKey(count))
 				{
 					localCount = info.MergeInfo[count].Item2;
-					
-					sheet.AddMergedRegion(new CellRangeAddress(posString, posString, posColumn, posColumn + localCount - 1));
-					var mergeCell = upper.CreateCell(posColumn);
-					mergeCell.SetCellValue(info.MergeInfo[count].Item1);
+					CellRangeAddress MergedRegion = new CellRangeAddress(posString, posString, posColumn, posColumn + localCount - 1);
+                    for (int currentCell = MergedRegion.FirstColumn; currentCell <= MergedRegion.LastColumn; currentCell++)
+                    {
+						upper.CreateCell(currentCell);
+                        upper.Cells[currentCell].CellStyle = cellStyle;
+                    }
+                    sheet.AddMergedRegion(MergedRegion);
+					var mergeCell = upper.Cells[posColumn];
+					mergeCell.SetCellValue(info.MergeInfo[count].Item1);					
 				}
 				if (localCount > 0)
 				{
 					lower.CreateCell(posColumn).SetCellValue(item);
+					lower.GetCell(posColumn).CellStyle = cellStyle;
 					localCount--;
 				}
 				else
 				{
-					sheet.AddMergedRegion(new CellRangeAddress(posString, posString+1, posColumn, posColumn));
+					CellRangeAddress MergedRegion = new CellRangeAddress(posString, posString + 1, posColumn, posColumn);                    
+                    sheet.AddMergedRegion(MergedRegion);
 					var mergeCell = upper.CreateCell(posColumn);
 					mergeCell.SetCellValue(item);
+					upper.GetCell(posColumn).CellStyle = cellStyle;
+
 				}
+				if (posColumn< info.Widths.Length)
+				{
+					//sheet.SetColumnWidth(posColumn, info.Widths[posColumn]);
+                }				
 				posColumn++;
 				count++;
 			}
@@ -95,6 +113,7 @@ namespace NonVisualComponents
 					var property = type.GetProperty(item);
 					var value = property?.GetValue(data);
 					row.CreateCell(posColumn).SetCellValue(Convert.ToString(value));
+					row.GetCell(posColumn).CellStyle= cellStyle;
 					posColumn++;
 				}
 			}
